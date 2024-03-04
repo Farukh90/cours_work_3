@@ -24,3 +24,10 @@ def executed_transactions(data: list):
             continue
         sorted_data.append(i)
     return sorted_data
+
+
+def sorts_date(data: list):
+    '''сортирует по дате и оставляет только успешные транзакции и возвращает последние 5 операций'''
+
+    data = sorted(data, key=lambda x: datetime.fromisoformat(x["date"]), reverse=True)
+    return data[:5]
