@@ -34,15 +34,14 @@ def sorts_date(data: list):
 
 
 def formatted_date(data: list):
-    '''форматирует дату'''
-
-    formatted_transactions = []
+    '''сортирует по дате и оставляет только успешные транзакции'''
     for el in data:
-        date_str = el["date"]
-        formatted_date = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S.%f").strftime("%d.%m.%Y")
-        el["date"] = formatted_date
-        formatted_transactions.append(el)
-    return formatted_transactions
+        date_str = el["date"].split('T')
+        numbers = date_str[0].split('-')
+        y_, m_, d_ = numbers
+        el["date"] = '.'.join([d_, m_, y_])
+
+    return data[:5]
 
 
 def group_card_numbers(transactions: list):
@@ -101,6 +100,8 @@ if __name__ == "__main__":
     #     print(transaction)
 
     mask_num = mask_numbers(transactions)
+    for i in mask_num:
+        print(i)
 
     result = make_result(mask_num)
 
