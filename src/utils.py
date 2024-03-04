@@ -85,3 +85,36 @@ def make_result(data: list):
             print(f'''
     {i['date']} {i['description']}
     {i['to'][0]}  {i['to'][1]} ''')
+
+
+if __name__ == "__main__":
+    data = load_data(os_path)
+
+    execute = executed_transactions(data)
+
+    sorted_ = sorts_date(execute)
+
+    formated = formatted_date(sorted_)
+
+    transactions = group_card_numbers(formated)
+    # for transaction in transactions:
+    #     print(transaction)
+
+    mask_num = mask_numbers(transactions)
+
+    result = make_result(mask_num)
+
+    # for i in fin:
+    #     if 'from' in i:
+    #         print(f'''
+    # {i['date']} {i['description']}
+    # {i['from'][0]} {i['from'][1]} -> {i['to'][0]} {i['to'][1]}''')
+    #     else:
+    #         print(f'''
+    # {i['date']} {i['description']}
+    # {i['to'][0]}  {i['to'][1]} ''')
+
+# пример вывода одной операции
+# 14.10.2018 Перевод организации
+# Visa Platinum 7000 79** **** 6361 -> Счет **9638
+# 82771.72 руб.
