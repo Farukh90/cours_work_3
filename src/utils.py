@@ -18,12 +18,13 @@ def load_data(file: str):
 def executed_transactions(data: list):
     '''фильтрует успешные транзакции'''
 
-    sorted_data = []
+    executed_data = []
     for i in data:
         if not i or i.get('state') == 'CANCELED':
             continue
-        sorted_data.append(i)
-    return sorted_data
+        executed_data.append(i)
+    return executed_data
+
 
 
 def sorts_date(data: list):
