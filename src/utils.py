@@ -72,3 +72,16 @@ def mask_numbers(data: list):
             else:
                 i['from'][1] = i['from'][1][:7] + '** **** ' + i['from'][1][-4:]
     return data
+
+
+def make_result(data: list):
+    '''выводит обработанную инфу'''
+    for i in data:
+        if 'from' in i:
+            print(f'''
+    {i['date']} {i['description']}
+    {i['from'][0]} {i['from'][1]} -> {i['to'][0]} {i['to'][1]}''')
+        else:
+            print(f'''
+    {i['date']} {i['description']}
+    {i['to'][0]}  {i['to'][1]} ''')
