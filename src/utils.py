@@ -86,25 +86,25 @@ def make_result(data: list):
     {i['date']} {i['description']}
     {i['to'][0]}  {i['to'][1]} ''')
 
-
-if __name__ == "__main__":
-    data = load_data(os_path)
-
-    execute = executed_transactions(data)
-
-    sorted_ = sorts_date(execute)
-
-    formated = formatted_date(sorted_)
-
-    transactions = group_card_numbers(formated)
-    # for transaction in transactions:
-    #     print(transaction)
-
-    mask_num = mask_numbers(transactions)
-    for i in mask_num:
-        print(i)
-
-    result = make_result(mask_num)
+#
+# if __name__ == "__main__":
+#     data = load_data(os_path)
+#
+#     execute = executed_transactions(data)
+#
+#     sorted_ = sorts_date(execute)
+#
+#     formated = formatted_date(sorted_)
+#
+#     transactions = group_card_numbers(formated)
+#     # for transaction in transactions:
+#     #     print(transaction)
+#
+#     mask_num = mask_numbers(transactions)
+#     for i in mask_num:
+#         print(i)
+#
+#     result = make_result(mask_num)
 
     # for i in fin:
     #     if 'from' in i:
