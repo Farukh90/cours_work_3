@@ -43,3 +43,15 @@ def formatted_date(data: list):
         el["date"] = formatted_date
         formatted_transactions.append(el)
     return formatted_transactions
+
+
+def group_card_numbers(transactions:list):
+    '''группирует номера по 4 цифры'''
+    for transaction in transactions:
+        for key in transaction:
+            if key in ['from', 'to']:
+                parts = transaction[key].rsplit(' ', 1)
+                parts[-1] = ' '.join([parts[-1][i:i + 4] for i in range(0, len(parts[-1]), 4)])
+                # parts = ' '.join(parts)
+                transaction[key] = parts
+    return transactions
