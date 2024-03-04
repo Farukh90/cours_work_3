@@ -13,3 +13,14 @@ def load_data(file: str):
     with open(file, 'r', encoding='utf-8') as file:
         json_data = json.load(file)
     return json_data
+
+
+def executed_transactions(data: list):
+    '''фильтрует успешные транзакции'''
+
+    sorted_data = []
+    for i in data:
+        if not i or i.get('state') == 'CANCELED':
+            continue
+        sorted_data.append(i)
+    return sorted_data
