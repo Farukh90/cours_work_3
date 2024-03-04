@@ -45,7 +45,7 @@ def formatted_date(data: list):
     return formatted_transactions
 
 
-def group_card_numbers(transactions:list):
+def group_card_numbers(transactions: list):
     '''группирует номера по 4 цифры'''
     for transaction in transactions:
         for key in transaction:
@@ -55,3 +55,20 @@ def group_card_numbers(transactions:list):
                 # parts = ' '.join(parts)
                 transaction[key] = parts
     return transactions
+
+
+def mask_numbers(data: list):
+    '''маскирует номера'''
+    for i in data:
+
+        if i['to'][0] == 'Счет':
+            i['to'][1] = '**' + i['to'][1][-4:]
+        else:
+            i['to'][1] = i['to'][1][:7] + '** **** ' + i['to'][1][-4:]
+
+        if 'from' in i:
+            if i['from'][0] == 'Счет':
+                i['from'][1] = '**' + i['from'][1][-4:]
+            else:
+                i['from'][1] = i['from'][1][:7] + '** **** ' + i['from'][1][-4:]
+    return data
