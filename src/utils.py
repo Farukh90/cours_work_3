@@ -31,3 +31,15 @@ def sorts_date(data: list):
 
     data = sorted(data, key=lambda x: datetime.fromisoformat(x["date"]), reverse=True)
     return data[:5]
+
+
+def formatted_date(data: list):
+    '''форматирует дату'''
+
+    formatted_transactions = []
+    for el in data:
+        date_str = el["date"]
+        formatted_date = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S.%f").strftime("%d.%m.%Y")
+        el["date"] = formatted_date
+        formatted_transactions.append(el)
+    return formatted_transactions
