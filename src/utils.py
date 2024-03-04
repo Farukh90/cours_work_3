@@ -42,7 +42,7 @@ def formatted_date(data: list):
         y_, m_, d_ = numbers
         el["date"] = '.'.join([d_, m_, y_])
 
-    return data[:5]
+    return data
 
 
 def group_card_numbers(transactions: list):
